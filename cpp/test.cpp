@@ -22,8 +22,8 @@ TestResults runTests(const vector<int> &testNumb, const vector<int> &numbVert, d
 	time_t timer = 0;
 	double avgMinOst = 0;
 	double avgEnum = 0;
-	double stDeviation = 0;	//Стандартное отклонение
-	//Запускаем тест для всех кол-ств вершин и детей
+	double stDeviation = 0;	//РЎС‚Р°РЅРґР°СЂС‚РЅРѕРµ РѕС‚РєР»РѕРЅРµРЅРёРµ
+	//Р—Р°РїСѓСЃРєР°РµРј С‚РµСЃС‚ РґР»СЏ РІСЃРµС… РєРѕР»-СЃС‚РІ РІРµСЂС€РёРЅ Рё РґРµС‚РµР№
 	for (int testI : testNumb) {
 		for (int n : numbVert) {
 			TestResults results = runTest(testI, n, criteria);
@@ -43,13 +43,13 @@ TestResults runTests(const vector<int> &testNumb, const vector<int> &numbVert, d
 TestResults runTest(int testI, int n, double criteria) {
 	Graph graph(n);
 	MakePoints(testI, graph);
-	time_t timer = -time(NULL);	//Запуск теста
+	time_t timer = -time(NULL);	//Р—Р°РїСѓСЃРє С‚РµСЃС‚Р°
 	Enumeration permutations;
 	MinPath minPath;
 	double lenEnum = permutations(graph);
 	double lenMinOst = minPath(graph);
 	timer += time(NULL);
-	(lenMinOst / lenEnum <= criteria && 1 <= lenMinOst / lenEnum) ? cout << "SUCCESS" : cout << "FAIL";	//Результаты теста
+	(lenMinOst / lenEnum <= criteria && 1 <= lenMinOst / lenEnum) ? cout << "SUCCESS" : cout << "FAIL";	//Р РµР·СѓР»СЊС‚Р°С‚С‹ С‚РµСЃС‚Р°
 	double err = abs(lenMinOst - lenEnum) / lenEnum * 100;
 	cout << " " << (int)((100 - err >= 0) ? (100 - err) : (0)) << "%\n"
 		<< fixed << setprecision(2)
